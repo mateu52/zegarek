@@ -39,7 +39,7 @@ body{
                     position:absolute;
                     width:100%;
                     &:nth-child(2){
-                        top: calc($navButtonSize / 2 - $barHeight / 2)
+                        top: calc($navButtonSize / 2 - $barHeight / 2);
                         //top:  ($navButtonSize / 2 - $barHeight / 2);
                         border: 2px solid green;
                     }

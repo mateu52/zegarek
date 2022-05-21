@@ -59,7 +59,7 @@ body nav .burgerWrapper label > div {
 }
 
 body nav .burgerWrapper label > div:nth-child(2) {
-  top: calc 2rem//2;
+  top: calc($navButtonSize / 2 - $barHeight / 2);
   border: 2px solid green;
 }
 
