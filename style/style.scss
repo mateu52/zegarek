@@ -9,8 +9,8 @@ body{
     nav{
         z-index: 2;
         position:relative;
-        border:2px dashed red;
-        background-color: aquamarine;
+        border-bottom:2px solid rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
         display:flex;
         padding: 2rem 2rem .5rem 2rem;
         justify-content: space-between;
@@ -40,13 +40,13 @@ body{
                 > div{
                     $barHeight:6px;
                     height: $barHeight;
-                    background-color: rgb(23, 215, 193);
+                    background-color: rgb(3, 3, 3);
                     position:absolute;
                     width:100%;
                     &:nth-child(2){
                         top: calc($navButtonSize / 2 - $barHeight / 2);
                         //top:  ($navButtonSize / 2 - $barHeight / 2);
-                        border: 2px solid green;
+                        border: 2px solid rgb(0, 0, 0);
                     }
                     &:nth-child(3){
                         bottom:0;
@@ -59,7 +59,7 @@ body{
                         }
                         div:nth-child(2){
                           width:20%;
-                          background-color:orange;
+                          background-color:rgb(255, 0, 0);
                         }
                       
                       }
@@ -81,7 +81,7 @@ body{
                     position:absolute;
                     
                     right:0;
-                    border:2px dashed red;
+                    border-bottom:2px dashed rgba(255, 0, 0, 0);
                     padding:20px 10px;
                     list-style: none;
             }
@@ -93,7 +93,7 @@ body{
                     position:absolute;
                     
                     right:0;
-                    border:2px dashed red;
+                    border:2px dashed rgba(255, 0, 0, 0);
                     padding:20px 10px;
                     list-style: none;
                 }
