@@ -4,10 +4,11 @@
 
 a {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
 button {
+  cursor: pointer;
   border-radius: 0;
   padding: 0.9rem 2.5rem;
   background-color: #FE682F;
@@ -197,6 +198,9 @@ body main .contentContainer .imgWrapper .img {
 }
 body main .contentContainer .contentWrapper p {
   text-align: center;
+  padding: 2rem 0;
+  margin: 0;
+  line-height: 2rem;
 }
 body main .trendingWrapper {
   border-top: 2px solid #000;
@@ -204,34 +208,25 @@ body main .trendingWrapper {
 }
 body main .trendingWrapper .trending {
   background-color: #FFEE01;
-  margin: 2.7rem;
-  border-left: 2px solid #000;
-  border-right: 2px solid #000;
-}
-body .trendingWrapper {
-  border-top: 2px solid #000;
-  border-bottom: 2px solid #000;
-  margin: 0;
-}
-body .trendingWrapper .trending {
-  background-color: #ffee01;
   margin: 0 2.7rem;
-  padding: 4rem 0;
   border-left: 2px solid #000;
   border-right: 2px solid #000;
+  padding: 4rem 0;
   display: flex;
   justify-content: center;
 }
-body .trendingWrapper .trending p {
+body main .trendingWrapper .trending p {
   margin: 0;
   font-size: 1.5rem;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1280px) {
   nav {
     padding: 0 3rem !important;
   }
   nav .burgerWrapper {
+    font-family: "Lemon/Milk light", sans-serif;
+    font-size: 0.8rem;
     border-left: 2px solid #000;
     border-right: 2px solid #000;
     flex: 1;
@@ -251,7 +246,6 @@ body .trendingWrapper .trending p {
     display: none;
   }
   nav .buttons {
-    z-index: 2 !important;
     display: flex !important;
     align-items: center;
   }
@@ -265,29 +259,71 @@ nav .buttons {
 
   main {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    margin: 0 3rem;
+    grid-template-columns: 2.5fr 1fr;
+    margin: 0 6rem;
+    margin-bottom: 4rem;
+  }
+  main .titleWrapper {
+    padding: 3rem 2rem 4rem 3rem !important;
+    margin: 0 !important;
+    border-bottom: 2px solid #000;
   }
   main .titleWrapper h2 {
     font-size: 3rem !important;
   }
   main .titleWrapper h2 img {
-    transform: scale(2);
+    transform: scale(2.4);
     margin-left: 2rem;
   }
   main .titleWrapper p {
     max-width: 70%;
   }
-  main .titleWrapper .buttons {
-    z-index: 2 !important;
+  main .titleWrapper button {
     display: flex !important;
+    margin: 2rem 0;
+  }
+  main .imgContainer {
+    border: none !important;
+  }
+  main .imgContainer .imgWrapper {
+    height: 100%;
+    margin: 0 !important;
+  }
+  main .imgContainer .imgWrapper .img {
+    min-height: 100% !important;
+  }
+  main .contentContainer {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    border-bottom: 2px solid #000;
+    border-right: none !important;
+  }
+  main .contentContainer .buttonContainer {
+    display: none;
+  }
+  main .contentContainer .imgWrapper {
+    flex: 1;
+  }
+  main .contentContainer .imgWrapper .img {
+    min-height: 100% !important;
+    border: none !important;
+  }
+  main .contentContainer .contentWrapper {
+    flex: 3;
+    padding: 2rem 3rem;
+    font-family: "Lemon/Milk light", sans-serif;
+    font-size: 1.5rem;
+  }
+  main .contentContainer .contentWrapper p {
+    text-align: left !important;
+  }
+  main .trendingWrapper {
+    border-top: none !important;
+  }
+  main .trendingWrapper .trending {
+    margin: 0 !important;
+    min-height: 100%;
     align-items: center;
   }
-  main .titleWrapper .buttons a {
-    margin: 0 1rem;
-  }
-  main .titleWrapper .logoWrapper,
-main .titleWrapper .buttons {
-    padding: 2.5rem 2rem;
-  }
-}/*# sourceMappingURL=style.css.map */
+}

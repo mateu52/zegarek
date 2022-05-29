@@ -4,11 +4,16 @@ $barHeight:6px;
 $globalPadding: 2.7rem;
 $border: 2px solid #000;
 $defaultFont:'Lemon/Milk', sans-serif;
+$lightFont:'Lemon/Milk light', sans-serif;
+
 *{box-sizing:border-box;}
-a{ text-decoration: none;
-    color:black;
+
+a{
+  text-decoration: none;
+  color:inherit;
 }
 button{
+  cursor:pointer;
   border-radius: 0;
   padding:.9rem 2.5rem;
   background-color: #FE682F;
@@ -33,15 +38,13 @@ button{
       left:0;
     }
   }
-
-
-
 }
 
+// default mobile view
 body{
   z-index:-3;
   position:relative;
-  font-family: 'Lemon/Milk', sans-serif;
+  font-family: $defaultFont;
   background-color: $bgColor;
   margin:0;
   nav{
@@ -171,7 +174,7 @@ body{
         margin:.5rem 0;
       }
       p{  
-        font-family: 'Lemon/Milk light', sans-serif;
+        font-family: $lightFont;
         margin: 2rem 0;
       }
       button{display:none;}
@@ -207,7 +210,7 @@ body{
       .buttonContainer{
         text-align: center;
         padding:$globalPadding 0;
-        
+
       }
       .imgWrapper{
         .img{
@@ -223,6 +226,9 @@ body{
       .contentWrapper{
         p{
           text-align: center;
+          padding:2rem 0;
+          margin:0;
+          line-height:2rem;
         }
       }
     }
@@ -232,41 +238,30 @@ body{
       border-bottom:$border;
       .trending{
         background-color: #FFEE01;
-        margin: $globalPadding;
+        margin:0 $globalPadding;
         border-left:$border;
         border-right:$border;
-
+        padding: 4rem 0;
+        display:flex;
+        justify-content: center;
+        p{
+          margin:0;
+          font-size:1.5rem;
+        }
       }
 
       
     }
-
-
-  }
-  .trendingWrapper {
-    border-top: $border;
-    border-bottom: $border;
-    margin: 0;
-    .trending {
-      background-color: #ffee01;
-      margin: 0 $globalPadding;
-      padding: 4rem 0;
-      border-left: $border;
-      border-right: $border;
-      display: flex;
-      justify-content: center;
-      p {
-        margin: 0;
-        font-size: 1.5rem;
-      }
-    }
   }
 }
 
-@media (min-width: 800px){
-  nav{  
+// Laptop view
+@media (min-width: 1280px){
+  nav{
     padding:0 3rem !important;
     .burgerWrapper{
+      font-family: $lightFont;
+      font-size:.8rem;
       border-left:$border;
       border-right:$border;
       flex:1;
@@ -286,46 +281,93 @@ body{
       }
     }
     .buttons{
-      z-index: 2 !important;
-      display: flex !important;
+      display:flex !important;
       align-items: center;
       a{
-          margin: 0 1rem;
+        margin: 0 1rem;
       }
     }
+
     .logoWrapper,
     .buttons{
-      padding:2.5rem 2rem
+      padding:2.5rem 2rem;
     }
   }
+
   main{
     display:grid;
-    grid-template-columns: 2fr 1fr;
-    margin: 0 3rem;
+    grid-template-columns:2.5fr 1fr;
+    margin:0 6rem;
+    margin-bottom:4rem;
     .titleWrapper{
+      padding: 3rem 2rem 4rem 3rem !important;
+      margin:0 !important;
+      border-bottom: $border;
       h2{
         font-size:3rem !important;
         img{
-          transform:scale(2);
+          transform:scale(2.4);
           margin-left:2rem;
         }
       }
       p{
         max-width: 70%;
       }
-      .buttons {
-        z-index: 2 !important;
-        display: flex !important;
-        align-items: center;
-        a{
-            margin: 0 1rem;
-        }
-        
+      button{
+        display:flex !important;
+        margin: 2rem 0;
       }
-      .logoWrapper,
-        .buttons{
-            padding: 2.5rem 2rem;
-        }
+
     }
+
+    .imgContainer{
+      border:none !important;
+      .imgWrapper{
+        height: 100%;
+        margin:0 !important;
+        .img{
+          min-height:100% !important;
+        }
+      }
+    }
+
+    .contentContainer{
+      margin:0 !important;
+      padding:0 !important;
+      display:flex;
+      border-bottom:$border;
+      border-right:none !important;
+      .buttonContainer{
+        display: none;
+      }
+      .imgWrapper{
+        flex:1;
+        .img{
+          min-height:100% !important;
+          border:none !important;
+        }   
+      }
+      .contentWrapper{
+        flex:3;
+        padding:2rem 3rem;
+        font-family: $lightFont;
+        font-size:1.5rem;
+        p{
+          text-align: left !important;
+        }
+      }
+
+    }
+
+    .trendingWrapper{
+      border-top:none !important;
+      .trending{
+        margin:0 !important;
+        min-height:100%;
+        align-items:center;
+      }
+    }
+
   }
+
 }
