@@ -1,103 +1,331 @@
+$navButtonSize: 2rem;
+$bgColor:#FDF6EB;
+$barHeight:6px;
+$globalPadding: 2.7rem;
+$border: 2px solid #000;
+$defaultFont:'Lemon/Milk', sans-serif;
+*{box-sizing:border-box;}
+a{ text-decoration: none;
+    color:black;
+}
+button{
+  border-radius: 0;
+  padding:.9rem 2.5rem;
+  background-color: #FE682F;
+  border:$border;
+  position: relative;
+  &:after{
+    content: '';
+    border:$border;
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color:#fff;
+    top:.5rem;
+    left:.5rem;
+    z-index:-1;
+  }
+  &:active{
+    top:.5rem;
+    left:.5rem;
+    &:after{
+      top:0;
+      left:0;
+    }
+  }
 
-$navButtonSize:2rem;
+
+
+}
 
 body{
-    box-sizing: border-box;
-    background-color: aliceblue;
-    font-family: 'Lemon/Milk', sans-serif;
-    //font-family: 'Lemon/Milk light', sans-serif;
-    nav{
-        z-index: 2;
-        position:relative;
-        border-bottom:2px solid rgb(0, 0, 0);
-        background-color: rgb(255, 255, 255);
-        display:flex;
-        padding: 2rem 2rem .5rem 2rem;
-        justify-content: space-between;
-        .logoWrapper{
-            display:flex;
-            align-items: center;
-            img{
-               width: $navButtonSize;
-               height: $navButtonSize;
-               margin: .7rem;     
-            }
-            h1{
-                width: 2rem;
-            }
-        } 
-        .burgerWrapper{
-            display:flex;
-            position:relative;
-            align-items: center;
-            margin-right: .7rem;
-            label{
-                width: $navButtonSize;
-                height: $navButtonSize;
-                right:0;
-                position:absolute;
-                cursor:pointer;
-                > div{
-                    $barHeight:6px;
-                    height: $barHeight;
-                    background-color: rgb(3, 3, 3);
-                    position:absolute;
-                    width:100%;
-                    &:nth-child(2){
-                        top: calc($navButtonSize / 2 - $barHeight / 2);
-                        //top:  ($navButtonSize / 2 - $barHeight / 2);
-                        border: 2px solid rgb(0, 0, 0);
-                    }
-                    &:nth-child(3){
-                        bottom:0;
-                        display:flex;
-                        background-color: transparent;
-                        justify-content:space-between;
-                        div:nth-child(1){
-                          background-color: #000;
-                          width:60%;
-                        }
-                        div:nth-child(2){
-                          width:20%;
-                          background-color:rgb(255, 0, 0);
-                        }
-                      
-                      }
-
-            
-                }
-            }
-            input{
-                display:none;
-            }
-            ol{
-                //display:none;
-                position:absolute;
-                top:-100vh;
-                list-style:none;
-                transition: .5s;
-                display:flex;
-                    flex-direction:column;
-                    position:absolute;
-                    
-                    right:0;
-                    border-bottom:2px dashed rgba(255, 0, 0, 0);
-                    padding:20px 10px;
-                    list-style: none;
-            }
-            #toogler:checked ~ {
-                ol{
-                    top:100%;
-                    display:flex;
-                    flex-direction:column;
-                    position:absolute;
-                    
-                    right:0;
-                    border:2px dashed rgba(255, 0, 0, 0);
-                    padding:20px 10px;
-                    list-style: none;
-                }
-            }
-        }       
+  z-index:-3;
+  position:relative;
+  font-family: 'Lemon/Milk', sans-serif;
+  background-color: $bgColor;
+  margin:0;
+  nav{
+    display:flex;
+    justify-content:space-between;
+    background-color: $bgColor;
+    padding: 2rem 2rem .5rem 2rem;
+    border-bottom:$border;
+    .logoWrapper{
+      display:flex;
+      align-items: center;
+      img{
+        width: $navButtonSize;
+        height: $navButtonSize;
+        margin: .7rem;
+      }
+      h1{
+        font-size: 1.2rem;
+      }
     }
+    .burgerWrapper{
+      display:flex;
+      position:relative;
+      align-items: center;
+
+      label{
+        margin-right:.7rem;
+        right:0;
+        width: $navButtonSize;
+        height: $navButtonSize;
+        position:absolute;
+        cursor:pointer;
+        // label > div - bezpośrednie dzieci divy od labela 
+        // ( nie obejmuje wnuków labela ) 
+        // border:3px solid red;
+        > div{
+          transition:.5s;
+          height:$barHeight;
+          background-color: #000;
+          position:absolute;
+          width:100%;
+          // & - odnosi się do tego selektora
+          // wewnątrz którego się znajduje
+          &:nth-child(2){
+            // przesuń diva na środek labela
+            margin-top: calc($navButtonSize/2);
+            // przesuń środek diva na środek labela
+            top: calc( -#{$barHeight} / 2 )
+            // top: calc( $barHeight / 2 - $barHeight);
+            // oneliner:
+            // top: calc($navButtonSize / 2 - $barHeight / 2);
+          }
+          &:nth-child(3){
+            bottom:0;
+            display:flex;
+            background-color: transparent;
+            justify-content:space-between;
+            div:nth-child(1){
+              background-color: #000;
+              width:60%;
+            }
+            div:nth-child(2){
+              width:20%;
+              background-color:#FF5202;
+            }
+          
+          }
+        }
+
+
+      }
+      input{
+        display:none;
+      }
+      ol{
+        z-index:-1;
+        margin:0;
+        background-color: $bgColor;
+        position:absolute;
+        top:calc( -100% - $navButtonSize);
+        transition: .5s;
+        display:flex;
+        flex-direction: column;
+        right:-2rem;
+        padding:20px 10px;
+        list-style:none;
+        width:100vw;
+      }
+      #toggler:checked ~ {
+        ol{
+          top:100%;
+        }
+        label > div{
+          // krzyżyk
+          top: calc($navButtonSize / 2 - $barHeight / 2);
+          &:nth-child(1){
+            transform: rotate(45deg);
+          }
+          &:nth-child(2){
+            opacity:0;
+          }
+          &:nth-child(3){
+            transform: rotate(-45deg);
+            // kropeczka na środku
+            div:nth-child(1){display:none;}
+            background-color: #000;
+            justify-content: center;
+          }
+        }
+      }
+
+    }
+    .buttons{
+      display:none;
+    }
+  }
+
+  main {
+    position:relative;
+    z-index:-2;
+    .titleWrapper{
+      border-left:$border;
+      margin-left:$globalPadding;
+      padding: 2rem 2rem 4rem 1rem;
+      h2{
+        font-size: 2rem;
+        margin:.5rem 0;
+      }
+      p{  
+        font-family: 'Lemon/Milk light', sans-serif;
+        margin: 2rem 0;
+      }
+      button{display:none;}
+      b{font-size:2rem;}
+    }
+
+    .imgContainer{
+      border-top:$border;
+      border-bottom:$border;
+      .imgWrapper{
+        background-color:#FE682F;
+        margin:0 $globalPadding;
+
+        border-left:$border;
+        border-right:$border;
+        
+
+        .img{
+          min-height:80vh;
+          background-image: url("../img/man-watch.webp");
+          background-size: cover;
+          background-position: center;
+          border-radius:50vw;
+        }
+      }
+    }
+
+    .contentContainer{
+      margin:0 $globalPadding;
+      border-right:$border;
+      border-left:$border;
+      padding: 0 1rem;
+      .buttonContainer{
+        text-align: center;
+        padding:$globalPadding 0;
+        
+      }
+      .imgWrapper{
+        .img{
+          min-height:60vh;
+          background-image: url(../img/businessman-checking-time.webp);
+          background-position: center;
+          background-size: cover;
+          border:$border;
+
+        }
+
+      }
+      .contentWrapper{
+        p{
+          text-align: center;
+        }
+      }
+    }
+
+    .trendingWrapper{
+      border-top:$border;
+      border-bottom:$border;
+      .trending{
+        background-color: #FFEE01;
+        margin: $globalPadding;
+        border-left:$border;
+        border-right:$border;
+
+      }
+
+      
+    }
+
+
+  }
+  .trendingWrapper {
+    border-top: $border;
+    border-bottom: $border;
+    margin: 0;
+    .trending {
+      background-color: #ffee01;
+      margin: 0 $globalPadding;
+      padding: 4rem 0;
+      border-left: $border;
+      border-right: $border;
+      display: flex;
+      justify-content: center;
+      p {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 800px){
+  nav{  
+    padding:0 3rem !important;
+    .burgerWrapper{
+      border-left:$border;
+      border-right:$border;
+      flex:1;
+      padding: 0 2rem;
+      ol{
+        top:0 !important;
+        position:relative !important;
+        z-index:0 !important;
+        width:auto !important;
+        right:auto !important;
+        flex-direction: row !important;
+        flex:1;
+        justify-content: space-evenly;
+      }
+      label{
+        display:none;
+      }
+    }
+    .buttons{
+      z-index: 2 !important;
+      display: flex !important;
+      align-items: center;
+      a{
+          margin: 0 1rem;
+      }
+    }
+    .logoWrapper,
+    .buttons{
+      padding:2.5rem 2rem
+    }
+  }
+  main{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    margin: 0 3rem;
+    .titleWrapper{
+      h2{
+        font-size:3rem !important;
+        img{
+          transform:scale(2);
+          margin-left:2rem;
+        }
+      }
+      p{
+        max-width: 70%;
+      }
+      .buttons {
+        z-index: 2 !important;
+        display: flex !important;
+        align-items: center;
+        a{
+            margin: 0 1rem;
+        }
+        
+      }
+      .logoWrapper,
+        .buttons{
+            padding: 2.5rem 2rem;
+        }
+    }
+  }
 }
